@@ -74,6 +74,14 @@ function appendMessage(message, sender) {
 
 // Función principal del chatbot
 async function getBotResponse(userInput) {
+  const greetings = ['hola', 'buenos días', 'buenas tardes', 'buenas noches', 'qué tal', 'hi'];
+
+  // Detectar saludos
+  if (greetings.some(greet => userInput.toLowerCase().includes(greet))) {
+    return '¡Hola! ¿Cómo puedo ayudarte hoy? Si quieres, dime los medicamentos que estás tomando o alguna duda que tengas sobre ellos.';
+  }
+
+  // Flujo de conversación
   if (conversationStep === 0) {
     conversationStep = 1;
     return 'Dime los nombres de los medicamentos que estás tomando o sobre los que tienes dudas.';
