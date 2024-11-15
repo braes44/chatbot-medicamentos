@@ -84,7 +84,7 @@ async function getBotResponse(userInput) {
   // Flujo de conversación
   if (conversationStep === 0) {
     conversationStep = 1;
-    return 'Dime los nombres de los medicamentos que estás tomando o sobre los que tienes dudas.';
+    return 'escribe los nombres de los medicamentos que tomas por separado para darte una respuesta adecuada';
   }
 
   if (conversationStep === 1) {
