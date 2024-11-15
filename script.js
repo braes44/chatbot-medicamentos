@@ -1,29 +1,69 @@
-// Inicializar variables
 const chatOutput = document.getElementById('chat-output');
 const inputField = document.getElementById('entrada');
 const sendButton = document.getElementById('enviar');
 
-// Estado del flujo de conversación
-let conversationStep = 0; // Controla en qué parte del flujo está el usuario
+let conversationStep = 0; // Controla el flujo de conversación
 let userDrugs = []; // Lista de medicamentos ingresados por el usuario
+
+// Base de datos de medicamentos (interacciones e información)
+const mockDatabase = {
+  aspirina: {
+    interacciones: ['ibuprofeno', 'warfarina'],
+    info: 'Se utiliza para reducir el dolor, la fiebre y la inflamación.',
+  },
+  paracetamol: {
+    interacciones: ['alcohol'],
+    info: 'Se usa para aliviar el dolor leve a moderado y reducir la fiebre.',
+  },
+  ibuprofeno: {
+    interacciones: ['aspirina'],
+    info: 'Un antiinflamatorio no esteroideo usado para tratar el dolor y la inflamación.',
+  },
+  metformina: {
+    interacciones: ['alcohol'],
+    info: 'Medicamento para tratar la diabetes tipo 2.',
+  },
+  amoxicilina: {
+    interacciones: ['alopurinol'],
+    info: 'Antibiótico para infecciones bacterianas.',
+  },
+  losartan: {
+    interacciones: ['litio'],
+    info: 'Usado para tratar la hipertensión.',
+  },
+  omeprazol: {
+    interacciones: ['clopidogrel'],
+    info: 'Reduce la cantidad de ácido producido en el estómago.',
+  },
+  simvastatina: {
+    interacciones: ['gemfibrozilo'],
+    info: 'Usada para reducir el colesterol y los triglicéridos.',
+  },
+  alopurinol: {
+    interacciones: ['azatioprina'],
+    info: 'Ayuda a reducir los niveles de ácido úrico en la sangre.',
+  },
+  warfarina: {
+    interacciones: ['aspirina'],
+    info: 'Anticoagulante usado para prevenir coágulos sanguíneos.',
+  },
+};
+
+// Saludo inicial
+appendMessage('¡Hola! Soy tu asistente virtual de salud. ¿Cómo puedo ayudarte hoy? 😊', 'bot');
 
 // Evento de enviar
 sendButton.addEventListener('click', async () => {
   const userMessage = inputField.value.trim();
   if (!userMessage) return;
 
-  // Mostrar mensaje del usuario
-  appendMessage(userMessage, 'user');
-
-  // Procesar respuesta del bot
+  appendMessage(userMessage, 'user'); // Mostrar mensaje del usuario
   const botResponse = await getBotResponse(userMessage);
-  appendMessage(botResponse, 'bot');
-
-  // Limpiar campo de entrada
-  inputField.value = '';
+  appendMessage(botResponse, 'bot'); // Mostrar respuesta del bot
+  inputField.value = ''; // Limpiar campo
 });
 
-// Función para mostrar mensajes en el chat
+// Función para mostrar mensajes
 function appendMessage(message, sender) {
   const messageDiv = document.createElement('div');
   messageDiv.className = `message ${sender}`;
@@ -32,75 +72,78 @@ function appendMessage(message, sender) {
   chatOutput.scrollTop = chatOutput.scrollHeight; // Scroll automático
 }
 
-// Mensaje inicial del bot
-appendMessage('¡Hola! Soy tu asistente virtual de salud. ¿En qué puedo ayudarte hoy?', 'bot');
-
 // Función principal del chatbot
 async function getBotResponse(userInput) {
-  // Flujo de conversación basado en pasos
   if (conversationStep === 0) {
-    conversationStep = 1; // Avanzar en el flujo
-    return 'Primero, dime los nombres de los medicamentos que estás tomando o sobre los que tienes dudas.';
+    conversationStep = 1;
+    return 'Dime los nombres de los medicamentos que estás tomando o sobre los que tienes dudas.';
   }
 
   if (conversationStep === 1) {
-    // Separar medicamentos ingresados por el usuario
     const drugs = userInput
       .toLowerCase()
-      .split(/\s|,|y/)
-      .map((drug) => drug.trim())
-      .filter((drug) => drug);
+      .split(/[,\s]+/)
+      .map(drug => drug.trim())
+      .filter(drug => drug);
 
     if (drugs.length === 0) {
       return 'Por favor, ingresa al menos un medicamento.';
     }
 
-    userDrugs = drugs; // Guardar medicamentos ingresados
-    conversationStep = 2; // Avanzar en el flujo
-    return `Entendido. Has mencionado: ${drugs.join(', ')}. Ahora, dime si deseas buscar interacciones o información específica sobre estos medicamentos.`;
+    userDrugs = drugs;
+    conversationStep = 2;
+    return `Gracias. Mencionaste: ${drugs.join(', ')}. ¿Quieres buscar interacciones o información general?`;
   }
 
   if (conversationStep === 2) {
-    // Responder según la intención del usuario (interacciones o información)
-    if (userInput.toLowerCase().includes('interacciones')) {
+    if (/interacciones/i.test(userInput)) {
       return checkDrugInteractions(userDrugs);
     }
-
-    if (userInput.toLowerCase().includes('información')) {
-      return `Actualmente, no tengo detalles específicos sobre medicamentos. Sin embargo, puedo ayudarte a buscar interacciones. ¿Quieres buscar interacciones entre los medicamentos?`;
+    if (/información/i.test(userInput)) {
+      return getDrugInformation(userDrugs);
     }
 
-    return '¿Podrías aclarar si deseas buscar interacciones o información específica sobre los medicamentos?';
+    return 'No entendí. ¿Deseas buscar interacciones o información general sobre los medicamentos?';
   }
 
-  // Respuesta predeterminada
-  return 'No tengo suficiente información sobre eso, pero sigo aprendiendo.';
+  return 'No estoy seguro de cómo ayudarte con eso. Intenta ser más específico.';
 }
 
-// Simulación de búsqueda de interacciones de medicamentos
+// Función para verificar interacciones de medicamentos
 function checkDrugInteractions(drugs) {
-  const mockDatabase = {
-    'losartán': ['ibuprofeno', 'aspirina'],
-    'aspirina': ['ibuprofeno', 'losartán'],
-    'ibuprofeno': ['aspirina', 'losartán'],
-    'paracetamol': ['alcohol'],
-  };
+  let responses = [];
 
-  const interactions = [];
-  drugs.forEach((drug) => {
-    const conflicts = mockDatabase[drug];
-    if (conflicts) {
-      conflicts.forEach((conflict) => {
-        if (drugs.includes(conflict)) {
-          interactions.push(`${drug} y ${conflict}`);
+  // Comparar cada medicamento con los demás
+  drugs.forEach((drug, index) => {
+    const data = mockDatabase[drug];
+    if (data && data.interacciones) {
+      drugs.forEach((otherDrug, otherIndex) => {
+        if (index !== otherIndex && data.interacciones.includes(otherDrug)) {
+          responses.push(
+            `⚠️ Interacción detectada entre ${drug} y ${otherDrug}. Consulta a tu médico.`
+          );
         }
       });
     }
   });
 
-  if (interactions.length > 0) {
-    return `Interacciones detectadas: ${interactions.join(', ')}. Por favor, consulta a tu médico antes de tomar estos medicamentos juntos.`;
+  if (responses.length > 0) {
+    return responses.join('\n');
   }
+  return 'No encontré interacciones conocidas entre los medicamentos mencionados.';
+}
 
-  return 'No encontré interacciones conocidas entre los medicamentos que mencionaste.';
+// Función para obtener información general sobre medicamentos
+function getDrugInformation(drugs) {
+  const infoResponses = [];
+  drugs.forEach(drug => {
+    const data = mockDatabase[drug];
+    if (data && data.info) {
+      infoResponses.push(`${drug}: ${data.info}`);
+    } else {
+      infoResponses.push(`${drug}: No tengo información sobre este medicamento.`);
+    }
+  });
+
+  return infoResponses.join('\n');
 }
