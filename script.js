@@ -150,11 +150,13 @@ function getDrugInformation(drugs) {
     const data = mockDatabase[drug];
     if (data && data.info) {
       infoResponses.push(`${drug}: ${data.info}`);
-    } else {
-      infoResponses.push(`${drug}: No tengo información sobre este medicamento.`);
     }
   });
 
   // Solo mostrar la información relevante de los medicamentos mencionados
-  return infoResponses.length > 0 ? infoResponses.join('\n') : 'No tengo información sobre los medicamentos mencionados.';
+  if (infoResponses.length > 0) {
+    return infoResponses.join('\n');
+  }
+  
+  return 'No tengo información sobre los medicamentos mencionados.';
 }
