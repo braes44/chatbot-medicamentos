@@ -144,6 +144,8 @@ function checkDrugInteractions(drugs) {
 // Función para obtener información general sobre medicamentos
 function getDrugInformation(drugs) {
   const infoResponses = [];
+
+  // Filtrar y proporcionar información solo de los medicamentos mencionados
   drugs.forEach(drug => {
     const data = mockDatabase[drug];
     if (data && data.info) {
@@ -153,5 +155,6 @@ function getDrugInformation(drugs) {
     }
   });
 
-  return infoResponses.join('\n');
+  // Solo mostrar la información relevante de los medicamentos mencionados
+  return infoResponses.length > 0 ? infoResponses.join('\n') : 'No tengo información sobre los medicamentos mencionados.';
 }
