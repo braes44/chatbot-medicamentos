@@ -47,6 +47,47 @@ const mockDatabase = {
     interacciones: ['aspirina'],
     info: 'Anticoagulante usado para prevenir coágulos sanguíneos.',
   },
+  // Más medicamentos añadidos
+  atorvastatina: {
+    interacciones: ['gemfibrozilo', 'eritromicina'],
+    info: 'Reduce el colesterol y ayuda a prevenir enfermedades cardiovasculares.',
+  },
+  tramadol: {
+    interacciones: ['alcohol', 'benzodiazepinas'],
+    info: 'Analgésico opioide usado para tratar el dolor moderado a severo.',
+  },
+  cefalexina: {
+    interacciones: ['probenecid'],
+    info: 'Antibiótico utilizado para infecciones bacterianas.',
+  },
+  furosemida: {
+    interacciones: ['digoxina', 'litio'],
+    info: 'Diurético utilizado para tratar edemas e hipertensión.',
+  },
+  ranitidina: {
+    interacciones: ['ketoconazol'],
+    info: 'Usado para reducir el ácido en el estómago.',
+  },
+  prednisona: {
+    interacciones: ['ibuprofeno', 'aspirina'],
+    info: 'Corticosteroide utilizado para tratar inflamaciones y alergias.',
+  },
+  enalapril: {
+    interacciones: ['litio', 'diuréticos'],
+    info: 'Inhibidor de la ECA usado para tratar la hipertensión.',
+  },
+  azitromicina: {
+    interacciones: ['warfarina'],
+    info: 'Antibiótico usado para infecciones bacterianas.',
+  },
+  clopidogrel: {
+    interacciones: ['omeprazol'],
+    info: 'Anticoagulante utilizado para prevenir coágulos sanguíneos.',
+  },
+  diclofenaco: {
+    interacciones: ['ibuprofeno', 'aspirina'],
+    info: 'Antiinflamatorio usado para tratar el dolor y la inflamación.',
+  },
 };
 
 // Saludo inicial con solicitud directa de medicamentos
