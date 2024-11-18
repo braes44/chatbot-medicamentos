@@ -136,7 +136,7 @@ async function getBotResponse(userInput) {
 
     userDrugs = drugs;
     conversationStep = 2;
-    return `Gracias. Mencionaste: ${drugs.join(', ')}. ¿Quieres buscar interacciones o información general?`;
+    return `Gracias. Mencionaste: ${drugs.join(', ')}. ¿Quieres buscar interacciones o información general?, si deseas información digita "información", si quieres saber si dichos medicamentos tienen interacciones importanes escribe "interacciones"`;
   }
 
   // Flujo para seleccionar interacciones o información general
