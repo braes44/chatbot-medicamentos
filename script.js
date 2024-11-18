@@ -2,7 +2,7 @@ const chatOutput = document.getElementById('chat-output');
 const inputField = document.getElementById('entrada');
 const sendButton = document.getElementById('enviar');
 
-let conversationStep = 0; // Controla el flujo de conversación
+let conversationStep = 1; // Inicio en 1 para solicitar los medicamentos directamente
 let userDrugs = []; // Lista de medicamentos ingresados por el usuario
 
 // Base de datos de medicamentos (interacciones e información)
@@ -49,8 +49,8 @@ const mockDatabase = {
   },
 };
 
-// Saludo inicial
-appendMessage('¡Hola! Soy tu asistente virtual de salud. ¿Cómo puedo ayudarte hoy? 😊', 'bot');
+// Saludo inicial con solicitud directa de medicamentos
+appendMessage('¡Hola! Soy tu asistente virtual de salud. 😊 Por favor, dime los nombres de los medicamentos que estás tomando o sobre los que tienes dudas.', 'bot');
 
 // Evento de enviar
 sendButton.addEventListener('click', async () => {
@@ -76,17 +76,12 @@ function appendMessage(message, sender) {
 async function getBotResponse(userInput) {
   const greetings = ['hola', 'buenos días', 'buenas tardes', 'buenas noches', 'qué tal', 'hi'];
 
-  // Detectar saludos
-  if (greetings.some(greet => userInput.toLowerCase().includes(greet))) {
-    return '¡Hola! ¿Cómo puedo ayudarte hoy? Si quieres, dime los medicamentos que estás tomando o alguna duda que tengas sobre ellos.';
+  // Detectar saludos y solicitar medicamentos si no se ha hecho
+  if (conversationStep === 1 && greetings.some(greet => userInput.toLowerCase().includes(greet))) {
+    return '¡Hola de nuevo! Por favor, dime los medicamentos que tomas para ayudarte mejor.';
   }
 
-  // Flujo de conversación
-  if (conversationStep === 0) {
-    conversationStep = 1;
-    return 'escribe los nombres de los medicamentos que tomas por separado para darte una respuesta adecuada';
-  }
-
+  // Flujo para solicitar medicamentos
   if (conversationStep === 1) {
     const drugs = userInput
       .toLowerCase()
@@ -103,6 +98,7 @@ async function getBotResponse(userInput) {
     return `Gracias. Mencionaste: ${drugs.join(', ')}. ¿Quieres buscar interacciones o información general?`;
   }
 
+  // Flujo para seleccionar interacciones o información general
   if (conversationStep === 2) {
     if (/interacciones/i.test(userInput)) {
       return checkDrugInteractions(userDrugs);
@@ -157,6 +153,7 @@ function getDrugInformation(drugs) {
   if (infoResponses.length > 0) {
     return infoResponses.join('\n');
   }
-  
+
   return 'No tengo información sobre los medicamentos mencionados.';
 }
+
