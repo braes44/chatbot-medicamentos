@@ -9,7 +9,7 @@ let userDrugs = []; // Lista de medicamentos ingresados por el usuario
 const mockDatabase = {
   aspirina: {
     interacciones: ["ibuprofeno", "warfarina"],
-    info: "Se utiliza para reducir el dolor, la fiebre y la inflamación."
+    info: "Se utiliza para reducir el dolor, la fiebre y la inflamación, dependiendo de la dosis funciona como  anticoagulante oral, tener cuidado en caso de estar en terapia con anticoagulantes"
   },
   paracetamol: {
     interacciones: ["alcohol"],
@@ -22,7 +22,7 @@ const mockDatabase = {
   },
   metformina: {
     interacciones: ["alcohol"],
-    info: "Medicamento para tratar la diabetes tipo 2."
+    info: "Medicamento para tratar la diabetes tipo 2, dentro de sus reacciones adversas mas comunes se encuentra la diarrea normalmente al inicio del tratamiento, no mezclar con bebidas alcoholicas"
   },
   amoxicilina: {
     interacciones: ["alopurinol"],
@@ -35,7 +35,7 @@ const mockDatabase = {
   omeprazol: {
     interacciones: ["clopidogrel"],
     info:
-      "Reduce la cantidad de ácido producido en el estómago, no produce una capa protectora."
+      "Reduce la cantidad de ácido producido en el estómago, no produce una capa protectora, su uso por ms de un año debe ser reeevaluado por un profesional sanitario"
   },
   simvastatina: {
     interacciones: ["gemfibrozilo"],
@@ -60,7 +60,7 @@ const mockDatabase = {
   },
   cefalexina: {
     interacciones: ["probenecid"],
-    info: "Antibiótico utilizado para infecciones bacterianas."
+    info: "Antibiótico utilizado para infecciones bacterianas, no tomar en caso de presentar alergias a las penicilinas"
   },
   furosemida: {
     interacciones: ["digoxina", "litio"],
@@ -88,11 +88,32 @@ const mockDatabase = {
   },
   diclofenaco: {
     interacciones: ["ibuprofeno", "aspirina"],
-    info: "Antiinflamatorio usado para tratar el dolor y la inflamación."
+    info: "Antiinflamatorio usado para tratar el dolor y la inflamación, dentro de sus reacciones adversas mas comunes se encuentra el reflujo gastroesofagico."
   },
   enoxaparina: {
     interacciones: ["ibuprofeno", "diclofenaco"],
-    info: "Anticoagulante usado para evitar formación de trombosis."
+    info: "Anticoagulante usado para evitar formación de trombosis, tener cuidado con la dosis resetada por el medico tratante, no repetir dosis en caso de olvido, parar el tratamiento en caso de aparición de morados o sangrado de algun tipo"
+
+ },
+  gemfibrozilo: {
+    interacciones: ["simvastatina", "atorvastatina"],
+    info: "El gemfibrozilo se usa junto con cambios en la dieta (restricción de la ingesta de colesterol y grasas) para reducir la cantidad de colesterol y triglicéridos (otras sustancias grasas) presentes en la sangre en ciertas personas con concentraciones muy altas de triglicéridos"
+
+ },
+  digoxina: {
+    interacciones: ["Omeprazol", "amiodarona"],
+    info: "Medicamento que se usa para tratar el latido cardiaco irregular y algunos tipos de insuficiencia cardíaca, algunos efectos secundarios a tener en cuenta son el mareo y la somnolencia, se recomienda seguir paso a paso las recomendaciones en la prescripción medica."
+
+ },
+  espironolactona: {
+    interacciones: ["colchicina", "digoxina"],
+    info: "Se indica en algunos casos para la insuficiencia cardiaca, hipertensión o hipocalcemia, si sufre insuficiencia renal debe consultar con un profesional sanitario en caso de requerir el uso del medicamento."
+
+ },
+  litio: {
+    interacciones: ["colchicina", "digoxina"],
+    info: "El litio es un estabilizador del estado de ánimo que se utiliza para tratar o controlar los episodios maníacos del trastorno bipolar ( depresión maníaca ). Sus principales efectos secundarios son: somnolencia o espasmos, en caso de que estos sintomas empeoren pare el medicamento y consulte en urgencias de su ciudad "
+
   }
 };
 
