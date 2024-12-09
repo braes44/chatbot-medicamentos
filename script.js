@@ -33,7 +33,7 @@ const mockDatabase = {
   },
   omeprazol: {
     interacciones: ['clopidogrel'],
-    info: 'Reduce la cantidad de ácido producido en el estómago.',
+    info: 'Reduce la cantidad de ácido producido en el estómago, no produce una capa protectora.',
   },
   simvastatina: {
     interacciones: ['gemfibrozilo'],
@@ -88,6 +88,12 @@ const mockDatabase = {
     interacciones: ['ibuprofeno', 'aspirina'],
     info: 'Antiinflamatorio usado para tratar el dolor y la inflamación.',
   },
+ 
+  enoxaparina: {
+    interacciones: ['ibuprofeno', 'diclofenaco'],
+    info: 'Anticoagulante usado para evitar formación de trombosis ',
+  },
+  
 };
 
 // Saludo inicial con solicitud directa de medicamentos
