@@ -13,12 +13,16 @@ const mockDatabase = {
   },
   paracetamol: {
     interacciones: ["alcohol"],
-    info: "Se usa para aliviar el dolor leve a moderado y reducir la fiebre."
+    info: "Se usa para aliviar el dolor leve a moderado y reducir la fiebre, no exceder los 8 gramos en el dia."
+  },
+  Acetaminofen: {
+    interacciones: ["alcohol"],
+    info: "Se usa para aliviar el dolor leve a moderado y reducir la fiebre, no exceder los 8 gramos en el dia."
   },
   ibuprofeno: {
     interacciones: ["aspirina"],
     info:
-      "Un antiinflamatorio no esteroideo usado para tratar el dolor y la inflamación."
+      "Un antiinflamatorio no esteroideo usado para tratar el dolor y la inflamación, no se recomienda sostener el tratamiento por mas de 7 dias, puede generar malestar gatrico."
   },
   metformina: {
     interacciones: ["alcohol"],
@@ -26,7 +30,7 @@ const mockDatabase = {
   },
   amoxicilina: {
     interacciones: ["alopurinol"],
-    info: "Antibiótico para infecciones bacterianas."
+    info: "Antibiótico para infecciones bacterianas, los antibioticos deben ser prescritos bajo formula medica, no se recomienda la automedicación debido a la resistencia a patogenos despues de su uso."
   },
   losartan: {
     interacciones: ["litio"],
@@ -60,7 +64,7 @@ const mockDatabase = {
   },
   cefalexina: {
     interacciones: ["probenecid"],
-    info: "Antibiótico utilizado para infecciones bacterianas, no tomar en caso de presentar alergias a las penicilinas"
+    info: "Antibiótico utilizado para infecciones bacterianas, no tomar en caso de presentar alergias a las penicilinas, los antibioticos deben ser prescritos bajo formula medica, no se recomienda la automedicación debido a la resistencia a patogenos despues de su uso"
   },
   furosemida: {
     interacciones: ["digoxina", "litio"],
@@ -80,7 +84,7 @@ const mockDatabase = {
   },
   azitromicina: {
     interacciones: ["warfarina"],
-    info: "Antibiótico usado para infecciones bacterianas."
+    info: "Antibiótico usado para infecciones bacterianas, , los antibioticos deben ser prescritos bajo formula medica, no se recomienda la automedicación debido a la resistencia a patogenos despues de su uso"
   },
   clopidogrel: {
     interacciones: ["omeprazol"],
