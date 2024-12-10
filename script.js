@@ -255,7 +255,7 @@ async function getBotResponse(userInput) {
     "buenas tardes",
     "buenas noches",
     "qué tal",
-    "hi"
+    "hi",
     "holi"
   ];
 
