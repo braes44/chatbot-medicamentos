@@ -448,7 +448,7 @@ Para saber si tienes medicamentos que interaccionen entre si puedes digitarlos j
 // Evento de enviar// Saludo inicial
 appendMessage(initialInfo, "bot");
 appendMessage(
-  "¡Hola! Soy tu asistente virtual de salud. 😊 Por favor, dime los nombres de los medicamentos que estás tomando o sobre los que tienes dudas. Si deseas ver el listado de medicamentos digita *mostrar* y aparecera el listado actual de medicamentos, si deseas reiniciar el chat digita *reiniciar*, digita el nombre del medicamento del que tengas dudas y presiona el boton *enviar*",
+  "¡Hola! Soy tu asistente virtual de salud. 😊 Por favor, dime los nombres de los medicamentos que estás tomando o sobre los que tienes dudas en minuscula. Si deseas ver el listado de medicamentos digita *mostrar* y aparecera el listado actual de medicamentos, si deseas reiniciar el chat digita *reiniciar*, digita el nombre del medicamento del que tengas dudas y presiona el boton *enviar*",
   "bot"
 );
 sendButton.addEventListener("click", async () => {
