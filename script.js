@@ -533,7 +533,7 @@ async function getBotResponse(userInput) {
       return getDrugInformation(userDrugs);
     }
 
-    return "No entendí. ¿Deseas buscar interacciones o información general sobre los medicamentos?";
+    return "No entendí, escribe reiniciar para consultar un nuevo medicamento";
   }
 
   return "No estoy seguro de cómo ayudarte con eso. Intenta ser más específico.";
