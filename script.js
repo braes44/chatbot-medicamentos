@@ -17,6 +17,13 @@ const mockDatabase = {
     interacciones: ["alcohol"],
     info:
       "Se usa para aliviar el dolor leve a moderado y reducir la fiebre. No exceder los 8 gramos en el día."
+
+
+  },
+  dicloxacilina: {
+    interacciones: ["alcohol"],
+    info:
+      "La dicloxacilina pertenece a una clase de medicamentos llamados penicilinas. Su acción consiste en eliminar las bacterias. Los antibióticos como la dicloxacilina no funcionan para combatir resfriados, influenza u otras infecciones virales."
   },
   digoxina: {
     interacciones: ["atorvastatina", "omeprazol", "esomeprazol", "neomicina"],
