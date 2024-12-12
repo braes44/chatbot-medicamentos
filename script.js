@@ -7,26 +7,37 @@ const showDrugsButton = document.getElementById("mostrar-medicamentos"); // Bot�
 let conversationStep = 1; // Inicio en 1 para solicitar los medicamentos directamente
 let userDrugs = []; // Lista de medicamentos ingresados por el usuario
 
-// Base de datos de medicamentos (interacciones e información)
+// Base de datos de medicamentos (interacciones e información) 
 const mockDatabase = {
   aspirina: {
     interacciones: ["ibuprofeno", "warfarina", "apixaban", "rivaroxaban"],
     info: "Se utiliza para reducir el dolor, la fiebre y la inflamación."
+      },
+  hidroxicloroquina: {
+    interacciones: ["azitromicina", "cimetidina", "neostigmina"],
+    info:
+      "Es utilizado en el tratamiento de la artritis crónica. Su acción antiinflamatoria está probablemente ligada a la estabilización de las membranas lisosomales, lo cual impide la liberación de enzimas lisosomales hidrolíticas."
+  },
+  neostigmina: {
+    interacciones: ["polimixina","hidroxicloroquina"],
+    info:
+      " La neostigmina es usado para mejorar el tono muscular en pacientes con miastenia gravis y, de rutina, se usa en anestesiología, al final de una operación quirúrgica para revertir los efectos de relajantes musculares no-despolarizante, como es el caso de rocuronio y vecuronio." 
   },
   paracetamol: {
     interacciones: ["alcohol"],
     info:
       "Se usa para aliviar el dolor leve a moderado y reducir la fiebre. No exceder los 8 gramos en el día."
+    },
+  colchicina: {
+    interacciones: ["ritonavir", "saquinavir"],
+    info:
+      "La colchicina no es un analgésico y no se puede usar para tratar algún dolor que no sea causado por la gota o FMF. La colchicina pertenece a una clase de medicamentos llamados agentes antigota. Funciona al detener los procesos naturales que causan inflamación y otros síntomas de gota, no usar si esta en tratamiento para el VIH "
   },
   cimetidina: {
     interacciones: ["amiodarona", "metformina"],
     info:
       "La cimetidina, de venta sin receta médica, se usa para prevenir y tratar los síntomas de la acidez de estómago asociados a la indigestión ácida y la acidez "
-  },
-  colchicina: {
-    interacciones: ["ritonavir", "saquinavir"],
-    info:
-      "La colchicina no es un analgésico y no se puede usar para tratar algún dolor que no sea causado por la gota o FMF. La colchicina pertenece a una clase de medicamentos llamados agentes antigota. Funciona al detener los procesos naturales que causan inflamación y otros síntomas de gota, no usar si esta en tratamiento para el VIH "
+  
   },
   dicloxacilina: {
     interacciones: ["alcohol"],
