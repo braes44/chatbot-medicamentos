@@ -102,13 +102,20 @@ const mockDatabase = {
   },
   dipirona: {
     interacciones: ["ciclosporina"],
-    info:
+    info: 
       "Analgésico, antipirético de segunda línea en casos de dolor o fiebre moderados o severos que no han cedido a otras alternativas farmacológicas. Muy usado en crisis de migraña. No usar por más del tiempo recetado por su médico. En caso de presentar alergias, suspenda inmediatamente."
   },
   ibuprofeno: {
     interacciones: ["aspirina"],
     info:
       "Un antiinflamatorio no esteroideo usado para tratar el dolor y la inflamación. No se recomienda sostener el tratamiento por más de 7 días. Puede generar malestar gástrico."
+
+  },
+  loratadina: {
+    interacciones: ["ketoconazol", "eritromicina" , "cimetidina"],
+    info:
+      "La loratadina pertenece a una clase de medicamentos llamados antihistamínicos. Su función consiste en bloquear la acción de la histamina, una sustancia en el cuerpo que causa los síntomas de la alergia."
+    
   },
   metformina: {
     interacciones: ["alcohol"],
