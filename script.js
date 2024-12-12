@@ -13,7 +13,7 @@ const mockDatabase = {
     interacciones: ["ibuprofeno", "warfarina", "apixaban", "rivaroxaban"],
     info: "Se utiliza para reducir el dolor, la fiebre y la inflamación."
       },
-  hiroxi_cloroquina: {
+  idroxicloroquina: {
     interacciones: ["azitromicina", "cimetidina", "neostigmina"],
     info:
       "Es utilizado en el tratamiento de la artritis crónica. Su acción antiinflamatoria está probablemente ligada a la estabilización de las membranas lisosomales, lo cual impide la liberación de enzimas lisosomales hidrolíticas."
@@ -33,7 +33,7 @@ const mockDatabase = {
     info:
       "Se usa para aliviar el dolor leve a moderado y reducir la fiebre. No exceder los 8 gramos en el día."
     },
-  colchicina: {
+  colcicina: {
     interacciones: ["ritonavir", "saquinavir"],
     info:
       "La colchicina no es un analgésico y no se puede usar para tratar algún dolor que no sea causado por la gota o FMF. La colchicina pertenece a una clase de medicamentos llamados agentes antigota. Funciona al detener los procesos naturales que causan inflamación y otros síntomas de gota, no usar si esta en tratamiento para el VIH "
