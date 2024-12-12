@@ -13,7 +13,7 @@ const mockDatabase = {
     interacciones: ["ibuprofeno", "warfarina", "apixaban", "rivaroxaban"],
     info: "Se utiliza para reducir el dolor, la fiebre y la inflamación."
       },
-  hidroxicloroquina: {
+  cloroquina: {
     interacciones: ["azitromicina", "cimetidina", "neostigmina"],
     info:
       "Es utilizado en el tratamiento de la artritis crónica. Su acción antiinflamatoria está probablemente ligada a la estabilización de las membranas lisosomales, lo cual impide la liberación de enzimas lisosomales hidrolíticas."
