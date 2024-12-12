@@ -17,8 +17,16 @@ const mockDatabase = {
     interacciones: ["alcohol"],
     info:
       "Se usa para aliviar el dolor leve a moderado y reducir la fiebre. No exceder los 8 gramos en el día."
-
-
+  },
+  cimetidina: {
+    interacciones: ["amiodarona", "metformina"],
+    info:
+      "La cimetidina, de venta sin receta médica, se usa para prevenir y tratar los síntomas de la acidez de estómago asociados a la indigestión ácida y la acidez "
+  },
+  colchicina: {
+    interacciones: ["ritonavir", "saquinavir"],
+    info:
+      "La colchicina no es un analgésico y no se puede usar para tratar algún dolor que no sea causado por la gota o FMF. La colchicina pertenece a una clase de medicamentos llamados agentes antigota. Funciona al detener los procesos naturales que causan inflamación y otros síntomas de gota, no usar si esta en tratamiento para el VIH "
   },
   dicloxacilina: {
     interacciones: ["alcohol"],
